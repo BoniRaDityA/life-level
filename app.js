@@ -23,8 +23,8 @@ function addXP(xp){
     while (player.xp >= 100){
        player.xp = player.xp-100;
        player.level++;
-       console.log("Anda naik 1 level!");
-       if (player.level == 5){
+       console.log("Anda naik ke level " +player.level);
+       if (player.level == 10){
         console.log("Anda sudah mencapai level maksimum");
        }
     }
