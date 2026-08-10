@@ -5,7 +5,8 @@ console.log("---LIFE LEVEL---");
 const player = {
     name: "Ditya",
     level: 1,
-    xp: 0
+    xp: 0,
+    activities: ["Gym", "Coding", "Reading"]
 };
 
 //console.log(player);
@@ -35,3 +36,24 @@ addXP(80);
 addXP(50);
 addXP(250);
 console.log(player);
+//mereference pada object player
+console.log(player.activities);
+console.log(player.activities[0]);
+console.log(player.activities.length);
+
+function doActivity(activitySearch){
+    for (let activity of player.activities){
+        console.log("Ditya melakukan "+activity);
+        if (activitySearch == 0){
+            console.log("=> +30 XP");
+        }
+        else if (activitySearch == 1){
+            console.log("=> +40 XP");
+        }
+        else if (activitySearch == 2){
+            console.log("=> 20 XP");
+        }
+    }
+}
+
+doActivity("Gym");
