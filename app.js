@@ -11,7 +11,8 @@ const player = {
         {name: "Gym", xp: 40},
         {name: "Coding", xp: 50},
         {name: "Reading", xp: 10}
-    ]
+    ],
+    history: [] //menampung histori aktivitas yang sudah pernah dilakukan
 };
 
 //console.log(player);
@@ -37,11 +38,11 @@ function addXP(xp){
     }
 }
 
-addXP(20);
-addXP(80);
-addXP(50);
-addXP(250);
-console.log(player);
+//addXP(20);
+//addXP(80);
+//addXP(50);
+//addXP(250);
+//console.log(player);
 //mereference pada object player
 //console.log(player.activities);
 //console.log(player.activities[0]);
@@ -73,10 +74,21 @@ function completeActivity(activitySearch){
     if (getActivity != null){
         addXP(getActivity.xp);
         player.completedActivities++;
+        player.history.push(activitySearch);
     }
     else {
         console.log("Aktivitas tidak ditemukan");
     }
+}
+
+function showStatus(){
+    console.log("==== LIFE LEVEL ====");
+    console.log("Player : "+player.name+"\n"
+        + "Level : "+player.level+"\n"
+        + "XP : "+player.xp+"\n"
+        + "Completed Actvities : "+player.completedActivities+"\n"
+        + "History : "+player.history 
+    );
 }
 
 doActivity("Cooking");
@@ -86,6 +98,17 @@ console.log(getActivity);
 console.log(getActivity.name);
 console.log(getActivity.xp);
 
+//completeActivity("gym");
+//console.log(player.xp);
+//console.log(player.completedActivities);
+
+showStatus();
+completeActivity("Gym");
+showStatus();
+completeActivity("Coding");
+showStatus();
+completeActivity("Reading");
+showStatus();
+console.log("----------------");
 completeActivity("Cooking");
-console.log(player.xp);
-console.log(player.completedActivities);
+showStatus();
