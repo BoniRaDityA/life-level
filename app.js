@@ -17,6 +17,7 @@ const player = {
 let XPcoding = 30;
 let XPgym = 30;
 let XPreading = 10;
+let found = false;
 
 //membuat fungsi supaya operasi bisa digunakan berkali-kali
 function addXP(xp){
@@ -43,17 +44,14 @@ console.log(player.activities.length);
 
 function doActivity(activitySearch){
     for (let activity of player.activities){
-        console.log("Ditya melakukan "+activity);
-        if (activitySearch == 0){
-            console.log("=> +30 XP");
+        if (activitySearch == activity){
+            console.log("Ditya melakukan "+activity);
+            found = true;
         }
-        else if (activitySearch == 1){
-            console.log("=> +40 XP");
-        }
-        else if (activitySearch == 2){
-            console.log("=> 20 XP");
-        }
+    }
+    if (found == false){
+        console.log("Aktivitas tidak ditemukan");
     }
 }
 
-doActivity("Gym");
+doActivity("Cooking");
