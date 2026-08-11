@@ -6,7 +6,12 @@ const player = {
     name: "Ditya",
     level: 1,
     xp: 0,
-    activities: ["Gym", "Coding", "Reading"]
+    completedActivities: 0,
+    activities: [
+        {name: "Gym", xp: 40},
+        {name: "Coding", xp: 50},
+        {name: "Reading", xp: 10}
+    ]
 };
 
 //console.log(player);
@@ -38,15 +43,15 @@ addXP(50);
 addXP(250);
 console.log(player);
 //mereference pada object player
-console.log(player.activities);
-console.log(player.activities[0]);
-console.log(player.activities.length);
+//console.log(player.activities);
+//console.log(player.activities[0]);
+//console.log(player.activities.length);
 
 function doActivity(activitySearch){
     for (let activity of player.activities){
-        if (activitySearch == activity){
+        if (activity.name == activitySearch){
             console.log("Ditya melakukan "+activity);
-            found = true;
+            return activity;
         }
     }
     if (found == false){
@@ -54,4 +59,33 @@ function doActivity(activitySearch){
     }
 }
 
+function findActivity(activitySearch){
+    for (let activity of player.activities){
+        if (activity.name == activitySearch){
+            return activity; //mengembalikan object (sebuah function memberikan data kepada function lain)
+        }
+    }
+    return null; //sudah mencari semua aktivitas, tapi tidak menemukan aktivitasnya
+}
+
+function completeActivity(activitySearch){
+    const getActivity = findActivity(activitySearch);
+    if (getActivity != null){
+        addXP(getActivity.xp);
+        player.completedActivities++;
+    }
+    else {
+        console.log("Aktivitas tidak ditemukan");
+    }
+}
+
 doActivity("Cooking");
+const getActivity = findActivity("Gym");
+console.log(getActivity);
+
+console.log(getActivity.name);
+console.log(getActivity.xp);
+
+completeActivity("Cooking");
+console.log(player.xp);
+console.log(player.completedActivities);
