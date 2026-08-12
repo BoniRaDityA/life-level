@@ -69,6 +69,7 @@ function findActivity(activitySearch){
     return null; //sudah mencari semua aktivitas, tapi tidak menemukan aktivitasnya
 }
 
+//fungsi untuk menampilkan list aktivitas yang sudah dilakukan
 function completeActivity(activitySearch){
     const getActivity = findActivity(activitySearch);
     if (getActivity != null){
@@ -81,6 +82,7 @@ function completeActivity(activitySearch){
     }
 }
 
+//menampilkan seluruh status player
 function showStatus(){
     console.log("==== LIFE LEVEL ====");
     console.log("Player : "+player.name+"\n"
